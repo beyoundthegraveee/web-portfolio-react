@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'CormorantGaramondBold';
+  src: url('../fonts/CormorantGaramond-Bold.ttf') format('truetype');
+}
+.contact {
+    text-align: center;
+    justify-content: flex-end;
+    font-family: CormorantGaramondBold, sans-serif;
+    
+}
+
+  .contact::before {
+    content: '';
+    margin-top: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../background_images/sem2.jpg');
+    background-position: center;
+    background-size:cover;
+    z-index: -1;
+}
+  
+  .contact h1 {
+    font-size: 50px;
+    margin-bottom: 30px;
+    color: #000000;
+  }
+  
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+  }
+  
+  .icon {
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .icon:hover {
+    transform: scale(1.2);
+  }
+  
+  .icon.instagram {
+    color: #8d1212;
+  }
+  
+  .icon.fiverr {
+    color: #086a13;
+  }
+  
+  .icon.email {
+    color: #1700c5;
+  }

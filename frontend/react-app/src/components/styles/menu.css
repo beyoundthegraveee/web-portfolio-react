@@ -1,0 +1,121 @@
+@font-face {
+    font-family: 'CormorantGaramondRegular';
+    src: url('../fonts/CormorantGaramond-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'CormorantGaramondBold';
+    src: url('../fonts/CormorantGaramond-Bold.ttf') format('truetype');
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: CormorantGaramondBold, sans-serif;
+  }
+  
+  nav {
+    background-color: #f4f4f4;
+    border-bottom:2px solid #000000;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .nav-container {
+    display:flex;
+    width: 100%;
+  }
+  
+  .nav-left, .nav-links, .nav-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-left {
+    flex-grow: 1;
+    padding: 20px;
+    width: 250px;
+    max-width: 250px;
+  }
+  
+  .brand {
+    font-size: 25px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+  }
+  
+  .nav-links {
+    width: 800px;
+    border-left: 2px solid #000000;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .nav-list li {
+    margin: 0 20px;
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    color: #656464;
+    font-size: 18px;
+    position:relative;
+    transition: color 0.3s, font-weight 0.3s;
+  }
+  
+  .nav-list a::after {
+    content: '➤';
+    position: absolute;
+    left: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+  }
+
+  .nav-list a:hover {
+    color: #000000;
+  }
+
+  .nav-list a:hover::after {
+    opacity: 1;
+  }
+  
+  .nav-right {
+    flex-grow: 1;
+    display: flex;
+    text-align: center;
+    border-left: 2px solid #333;
+    padding-left: 20px;
+  }
+  
+  .freelance-text {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #000000;
+  }
+
+  .hire-link {
+    text-decoration: none;
+    color: #000000;
+    font-size: 24px;
+  }
+
+  .hire-link:hover {
+    text-decoration: underline;
+    transition: text-decoration 0.3s ease-in-out;
+  }

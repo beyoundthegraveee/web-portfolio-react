@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'CormorantGaramondBold';
+    src: url('../fonts/CormorantGaramond-Bold.ttf') format('truetype');
+}
+.work-page {
+    font-family: CormorantGaramondBold, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .page-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #070505;
+  }
+  
+  .project-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .image-container {
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    align-items:flex-end;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .project-image {
+    width: 100%;
+    max-width: 800px;
+    display:flex;
+    object-fit:contain;
+  }
+  
+  .details-container {
+    text-align: center;
+  }
+  
+  .project-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #242424;
+  }
+  
+  .review-container,
+  .client-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .review-container p,
+  .client-container p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
+  strong {
+    color: #333;
+  }
+
+  .details-container p{
+    font-size: 20px;
+
+  }
+
+  .work-page h3 {
+    font-size: 24px;
+    text-align: center;
+  }
+  
