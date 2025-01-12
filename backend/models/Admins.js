@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 module.exports = function(sequelize) {
-  return sequelize.define('Users', {
+  return sequelize.define('Admins', {
     ID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
@@ -23,12 +23,12 @@ module.exports = function(sequelize) {
       allowNull: false,
     },
     Role: {
-      type: Sequelize.ENUM('user', 'guest'),
-      defaultValue: 'guest',
+      type: Sequelize.ENUM('admin'),
+      defaultValue: 'admin',
       allowNull: false,
     },
   }, {
-    tableName: 'Users',
+    tableName: 'Admins',
     timestamps: false,
   });
 };

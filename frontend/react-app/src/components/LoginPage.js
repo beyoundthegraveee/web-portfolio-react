@@ -3,6 +3,9 @@ import Modal from 'react-modal';
 import './styles/login.css';
 import './styles/modal.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import { useRole } from './RoleContext';
 
 const LoginPage = () => {
   const [login, setLogin] = useState('');
@@ -10,6 +13,7 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+  const { setRole } = useRole();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,19 +22,14 @@ const LoginPage = () => {
         Password: password,
       };
     try {
-      const response = await fetch('http://localhost:4040/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(User),
-      });
-
-      if (response.ok) {
+      const response = await axios.post('http://localhost:4040/users/login', User);
+      if (response.status === 200) {
+        const user = response.data.user;
+        Cookies.set('user', JSON.stringify(user), { expires: 1 });
+        setRole(user.role);
         setIsModalOpen(true);
       } else {
-        const data = await response.json();
-        setError(data.message || 'Login failed');
+        setError(response.data.message || 'Login failed');
       }
     } catch (error) {
       setError('An error occurred. Please try again later.');

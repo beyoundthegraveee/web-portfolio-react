@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../components/styles/portfolio.css';
 import { useNavigate } from 'react-router-dom';
+import { useRole } from './RoleContext';
 
 const PortfolioPage = () => {
   const [projects, setProjects] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const { role } = useRole();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,7 +42,12 @@ const PortfolioPage = () => {
   };
 
   const handleAddProjectClick = () => {
-    navigate('/add-project');
+    if (role === 'admin') {
+      navigate('/add-project');
+    } else {
+      alert('You are not authorized to add projects.');
+      return;
+    }
   };
 
   const filteredProjects = selectedCategory
@@ -65,7 +72,9 @@ const PortfolioPage = () => {
             </button>
           ))}
         </div>
-        <button className="add-category-button" onClick={handleAddProjectClick}>+New Project</button>
+        {role === 'admin' && (
+          <button className="add-category-button" onClick={handleAddProjectClick}>+New Project</button>
+        )};
       </div>
       <div className="projects">
       {filteredProjects.length === 0 ?(

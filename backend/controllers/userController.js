@@ -1,6 +1,7 @@
 const db = require('../config/db.js');
 const bcrypt = require('bcrypt');
 const Users = db.users;
+const Admins = db.admins;
 
 const addNewUser = async (req, res) => {
   const { Login, Email, Password } = req.body;
@@ -20,6 +21,7 @@ const addNewUser = async (req, res) => {
       Login,
       Email,
       Password : hashedPassword,
+      Role: 'user',
     });
 
     return res.status(201).json({
@@ -33,25 +35,35 @@ const addNewUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-    const { Login, Password } = req.body;
-    try {
-      const user = await Users.findOne({ where: { Login } });
-      if (!user) {
+  const { Login, Password } = req.body;
+  try {
+    let user = await Admins.findOne({ where: { Login } });
+    if (user) {
+      if (Password !== user.Password) {
         return res.status(400).json({ message: 'Invalid login or password.' });
       }
-  
-      const isPasswordValid = await bcrypt.compare(Password, user.Password);
-      if (!isPasswordValid) {
+    } else {
+      user = await Users.findOne({ where: { Login } });
+      if (user) {
+        const isPasswordValid = await bcrypt.compare(Password, user.Password);
+        if (!isPasswordValid) {
+          return res.status(400).json({ message: 'Invalid login or password.' });
+        }
+        user.Role = 'user';
+      } else {
         return res.status(400).json({ message: 'Invalid login or password.' });
       }
-      return res.status(200).json({
-        message: 'Login successful!',
-        user: { id: user.ID, login: user.Login, email: user.Email },
-      });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ message: 'Server error. Please try again later.' });
     }
+
+    req.session.user = { id: user.ID, login: user.Login, email: user.Email, role: user.Role };
+    return res.status(200).json({
+      message: 'Login successful!',
+      user: { id: user.ID, login: user.Login, email: user.Email, role: user.Role },
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Server error. Please try again later.' });
+  }
 };
 
 module.exports = { 

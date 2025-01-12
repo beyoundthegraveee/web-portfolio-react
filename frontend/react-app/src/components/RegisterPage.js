@@ -57,8 +57,8 @@ const RegisterPage = () => {
     const loginRegex = /^[a-zA-Z0-9]+$/;
     const emailRegex = /^\S+@\S+\.\S+$/;
 
-    if (login.length < 10 || login.length > 20) {
-      setError('Login must have at least 10 characters and less than 20.');
+    if (login.length < 6 || login.length > 20) {
+      setError('Login must have at least 6 characters and less than 20.');
       return false;
     }
     if (!loginRegex.test(login)) {
@@ -73,8 +73,8 @@ const RegisterPage = () => {
       setError('Invalid email format.');
       return false;
     }
-    if (password.length < 12 || password.length > 25) {
-      setError('Password must be greater than 12 and less than 25 characters.');
+    if (password.length < 8 || password.length > 25) {
+      setError('Password must be greater than 8 and less than 25 characters.');
       return false;
     }
     return true;

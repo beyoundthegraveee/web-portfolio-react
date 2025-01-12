@@ -22,11 +22,15 @@ const Kategoria = require('../models/Kategoria.js')(sequelize);
 const Project = require('../models/Project.js')(sequelize);
 const Recenzja = require('../models/Recenzja.js')(sequelize);
 const Users = require('../models/Users.js')(sequelize);
+const Admins = require('../models/Admins.js')(sequelize);
+const Comments = require ('../models/Comments.js')(sequelize);
 
 Recenzja.belongsTo(Klients, { foreignKey: 'Klients_ID' });
 Recenzja.belongsTo(Project, { foreignKey: 'Projekt_ID' });
 Klients.hasMany(Recenzja, { foreignKey: 'Klients_ID' });
 Project.hasMany(Recenzja, { foreignKey: 'Projekt_ID' });
+Project.hasMany(Comments, { foreignKey: 'Project_ID' });
+Comments.belongsTo(Project, { foreignKey: 'Project_ID' });
 
 module.exports = {
     sequelize: sequelize,
@@ -36,4 +40,6 @@ module.exports = {
     projekt: Project,
     recenzja: Recenzja,
     users: Users,
+    admins: Admins,
+    comments: Comments,
 };

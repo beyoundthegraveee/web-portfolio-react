@@ -1,6 +1,6 @@
 .work-page {
     font-family: CormorantGaramondBold, sans-serif;
-    max-width: 600px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
   }
@@ -9,6 +9,20 @@
     text-align: center;
     margin-bottom: 20px;
     color: #070505;
+  }
+
+  .main-container {
+    display: flex;
+    gap: 100px;
+  }
+
+
+  .info-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 400px;
+    max-width: 600px;
   }
   
   .project-container {
@@ -29,6 +43,7 @@
   .project-image {
     width: 100%;
     max-width: 800px;
+    max-height: fit-content;
     display:flex;
     object-fit:contain;
   }
@@ -50,6 +65,7 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f9f9f9;
+    max-width: 600px;
   }
   
   .review-container p,
@@ -72,12 +88,19 @@
     text-align: center;
   }
 
+  .buttons-container {
+    display: flex;
+    gap: 5px;
+    justify-content: center; /* по центру */
+    margin-top: 10px;
+  }
+
   .update-button, .delete-button {
     background-color: #ffffff;
     color: #000000;
     border: 2px solid #000000;
     border-radius: 20px;
-    padding: 10px 15px;
+    padding: 5px 15px;
     width: 150px;
     cursor: pointer;
     margin: 10px;
@@ -95,5 +118,41 @@
   .delete-button:hover {
     background-color: #ff0000;
     color: #ffffff;
+  }
+  .comments-section {
+    flex: 0 0 300px;
+    margin-left: 10px;
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-height: 600px;
+    max-width: 500px;
+    overflow-y: auto;
+  }
+  
+  .comments-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 50px;
+  }
+  
+  .comment-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .comment-input {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    margin-top: 0;
+  }
+  
+  .add-comment-button {
+    margin-top: 0;
   }
   

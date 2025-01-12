@@ -2,15 +2,29 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
+const session = require('express-session');
 const PORT = 4040;
 const app = express();
+
 const authRouter = require('./routes/authorRouter');
 const projectRouter = require('./routes/projectRouter');
 const reviewRouter = require('./routes/reviewRouter');
 const categoryRouter = require('./routes/categoryRouter');
 const userRouter = require('./routes/userRouter');
 const clientRouter = require('./routes/clientRouter');
+const commentRouter = require('./routes/commentRouter');
+
+app.use(session({
+    name: 'my-session-id',
+    secret: 'my-secret-key',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        secure: false,
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000
+    }
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,6 +41,8 @@ app.use('/categories', categoryRouter);
 app.use('/users', userRouter);
 
 app.use('/client', clientRouter);
+
+app.use('/comment', commentRouter);
 
 
 

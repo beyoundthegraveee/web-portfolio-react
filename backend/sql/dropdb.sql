@@ -1,15 +1,18 @@
 USE portfolio;
 
 ALTER TABLE `Recenzja` DROP FOREIGN KEY Recenzja_Project;
-ALTER TABLE `Recenzja` DROP FOREIGN KEY Recenzja_Klient;
+ALTER TABLE `Recenzja` DROP FOREIGN KEY Recenzja_Klients;
 ALTER TABLE `Projekt` DROP FOREIGN KEY Project_Autor;
 ALTER TABLE `Projekt` DROP FOREIGN KEY Project_Kategoria;
+ALTER TABLE `Comments` DROP FOREIGN KEY Comments_Project_FK;
 
+DROP TABLE IF EXISTS `Comments`;
 DROP TABLE IF EXISTS `Recenzja`;
 DROP TABLE IF EXISTS `Projekt`;
 DROP TABLE IF EXISTS `Kategoria`;
 DROP TABLE IF EXISTS `Autor`;
 DROP TABLE IF EXISTS `Klients`;
-
+DROP TABLE IF EXISTS `Users`;
+DROP TABLE IF EXISTS `Admins`;
 
 DROP SCHEMA IF EXISTS `portfolio`;

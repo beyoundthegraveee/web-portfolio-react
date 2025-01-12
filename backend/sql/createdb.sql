@@ -8,7 +8,7 @@ CREATE TABLE Klients (
     Imie VARCHAR(20) NOT NULL,
     Nazwisko VARCHAR(20) NOT NULL,
     Kontakt VARCHAR(40) NOT NULL,
-    CONSTRAINT Klient_pk PRIMARY KEY (ID)
+    CONSTRAINT Klients_pk PRIMARY KEY (ID)
 );
 
 CREATE TABLE Autor (
@@ -42,12 +42,40 @@ CREATE TABLE Projekt (
 
 CREATE TABLE Recenzja (
     Projekt_ID INT NOT NULL,
-    Klient_ID INT NOT NULL,
+    Klients_ID INT NOT NULL,
     Ocena_wymagan FLOAT(3, 2) NOT NULL,
     Ocena_czasu FLOAT(3, 2) NOT NULL,
     Wrazenie VARCHAR(500),
-    CONSTRAINT Recenzja_pk PRIMARY KEY (Projekt_ID, Klient_ID)
+    CONSTRAINT Recenzja_pk PRIMARY KEY (Projekt_ID, Klients_ID)
 );
+
+CREATE TABLE Users (
+	ID INT NOT NULL AUTO_INCREMENT,
+    Login VARCHAR(50) UNIQUE NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Role ENUM('user', 'guest') DEFAULT 'guest' NOT NULL,
+    CONSTRAINT Users_pk PRIMARY KEY (ID)
+);
+
+CREATE TABLE Admins (
+	ID INT NOT NULL AUTO_INCREMENT,
+    Login VARCHAR(50) UNIQUE NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+	Role ENUM('admin') DEFAULT 'admin' NOT NULL,
+    CONSTRAINT Admin_pk PRIMARY KEY (ID)
+);
+
+CREATE TABLE Comments (
+    ID INT NOT NULL AUTO_INCREMENT,
+    Project_ID INT NOT NULL,
+    Content TEXT NOT NULL,
+    Date_Added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT Comments_pk PRIMARY KEY (ID)
+);
+
+
 
 #foreign keys
 ALTER TABLE Projekt ADD CONSTRAINT Project_Autor FOREIGN KEY Autor_Project (Autor_ID)
@@ -64,3 +92,7 @@ ALTER TABLE Recenzja
 ALTER TABLE Recenzja 
     ADD CONSTRAINT Recenzja_Klients FOREIGN KEY (Klients_ID)
     REFERENCES Klients (ID);
+    
+ALTER TABLE Comments 
+    ADD CONSTRAINT Comments_Project_FK FOREIGN KEY (Project_ID)
+    REFERENCES Projekt (ID);

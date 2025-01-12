@@ -14,7 +14,7 @@ INSERT INTO Klients (Imie, Nazwisko, Kontakt) VALUES
 
 
 INSERT INTO Autor (Imie, Nazwisko, Biografia, Email, LinkInstagram, LinkFiverr) VALUES
-('Bogdan', 'Lazarenko', 'With over 5 years of experience in design, Bogdan Lazarenko has established himself as a creative professional known for crafting unique and functional visual solutions. Born and raised in Kyiv, his passion for art and digital technologies emerged early, driving him to explore graphic design before expanding his expertise into UI/UX and web design. Bogdan''s work is defined by a keen eye for detail and a strong sense of aesthetics, enabling him to create designs that are not only visually appealing but also user-centric. He has contributed to a variety of projects, including startups, e-commerce platforms, and creative agencies, always focusing on simplicity, usability, and beauty. Beyond his professional work, Bogdan enjoys mentoring aspiring designers, sharing educational content, and staying ahead of design trends. His mission is to inspire others and make the world a little more beautiful through his creative contributions.', 'k1llm31mmortal@gmail.com', 'https://www.instagram.com/k1llm31mmortal?', 'https://www.fiverr.com/crmsnlpstck');
+('Bogdan', 'Lazarenko', 'Bogdan Lazarenko is a talented designer and artist from Belarus with over 5 years of experience in the creative industry. His passion for art and design started early, leading him to explore a variety of visual mediums and techniques. Known for his unique style and attention to detail, Bogdan specializes in creating functional and visually compelling designs that leave a lasting impression. Over the years, he has worked on numerous projects for startups, creative agencies, and personal art pieces, always striving to bring beauty and creativity to life. When he is not working on client projects, Bogdan enjoys sharing his artistic journey and expertise with aspiring designers. His goal is to inspire others and make the world a more beautiful place through his work.', 'k1llm31mmortal@gmail.com', 'https://www.instagram.com/k1llm31mmortal?', 'https://www.fiverr.com/crmsnlpstck');
 
 
 INSERT INTO Kategoria (Opis, Nazwa_narzedzi) VALUES
@@ -36,7 +36,7 @@ INSERT INTO Projekt (Opis, Termin, Status_pr, Cena, Autor_ID, Kategoria_ID) VALU
 ('scullstructure artwork originally for Sla1', '2024-06-22', 'Done', 250, 1, 5),
 ('logo for nfdsetsionn', '2024-06-27', 'Done', 300, 1, 2);
 
-INSERT INTO Recenzja (Projekt_ID, Klient_ID, Ocena_wymagan, Ocena_czasu, Wrazenie) VALUES
+INSERT INTO Recenzja (Projekt_ID, Klients_ID, Ocena_wymagan, Ocena_czasu, Wrazenie) VALUES
 (1, 1, 4.5, 4.8, 'Excellent work! Highly professional.'),
 (2, 2, 4.2, 4.6, 'Creative approach and great execution.'),
 (3, 3, 4.8, 4.5, 'Highly recommended. Very satisfied.'),
@@ -47,4 +47,13 @@ INSERT INTO Recenzja (Projekt_ID, Klient_ID, Ocena_wymagan, Ocena_czasu, Wrazeni
 (8, 8, 4.4, 4.5, 'Solid and reliable performance.'),
 (9, 9, 4.8, 4.7, 'Professional and pleasant to work with.'),
 (10, 10, 5.0, 5.0, 'Perfect in every way! Exceeded expectations.');
+
+INSERT INTO Admins (Login, Email, Password)
+VALUES ('admin', 'admin@gmail.com', 'admin');
+
+INSERT INTO Comments (Project_ID, Content) 
+VALUES 
+(1, 'This is the first comment for project 1'),
+(1, 'Another insightful comment for project 1'),
+(1, 'Great progress on project 1! Keep it up.');
 

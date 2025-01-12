@@ -2,6 +2,7 @@ const db = require('../config/db.js');
 const Project = db.projekt;
 const Klients = db.klients;
 const Recenzja = db.recenzja;
+const Comments = db.comments;
 
 const getProjects = async (req, res) => {
   try {
@@ -34,6 +35,11 @@ const deleteProjectById = async (req, res) => {
     const project = await Project.findOne({ where: { ID: id } });
     if (!project) {
       return res.status(404).json({ message: 'Project not found' });
+    }
+
+    const comments = await Comments.findAll({ where: { Project_ID: id } });
+    if (comments) {
+      await Comments.destroy({ where: { Project_ID: id } });
     }
 
     const review = await Recenzja.findOne({ where: { Projekt_ID: id } });
