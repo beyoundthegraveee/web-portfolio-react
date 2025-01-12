@@ -137,13 +137,8 @@ class AWaves extends HTMLElement {
       d += `M ${p1.x} ${p1.y}`;
 
       points.forEach((p1, pIndex) => {
-        const isLast = pIndex === points.length - 1;
 
         p1 = moved(p1);
-
-        const p2 = moved(
-          points[pIndex + 1] || points[points.length - 1]
-        );
 
         d += `L ${p1.x} ${p1.y}`;
       });

@@ -21,6 +21,7 @@ const Autor = require('../models/Autor.js')(sequelize);
 const Kategoria = require('../models/Kategoria.js')(sequelize);
 const Project = require('../models/Project.js')(sequelize);
 const Recenzja = require('../models/Recenzja.js')(sequelize);
+const Users = require('../models/Users.js')(sequelize);
 
 Recenzja.belongsTo(Klients, { foreignKey: 'Klients_ID' });
 Recenzja.belongsTo(Project, { foreignKey: 'Projekt_ID' });
@@ -33,5 +34,6 @@ module.exports = {
     autor: Autor,
     kategoria: Kategoria,
     projekt: Project,
-    recenzja: Recenzja
+    recenzja: Recenzja,
+    users: Users,
 };

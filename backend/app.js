@@ -8,6 +8,9 @@ const app = express();
 const authRouter = require('./routes/authorRouter');
 const projectRouter = require('./routes/projectRouter');
 const reviewRouter = require('./routes/reviewRouter');
+const categoryRouter = require('./routes/categoryRouter');
+const userRouter = require('./routes/userRouter');
+const clientRouter = require('./routes/clientRouter');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,11 +20,14 @@ app.use('/author', authRouter);
 
 app.use('/projects', projectRouter);
 
-app.use('/projects/:id', projectRouter);
-
 app.use('/review', reviewRouter);
 
-app.use('/review/:id', reviewRouter);
+app.use('/categories', categoryRouter);
+
+app.use('/users', userRouter);
+
+app.use('/client', clientRouter);
+
 
 
 

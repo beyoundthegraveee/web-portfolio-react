@@ -14,6 +14,8 @@ const Menu = () => {
             <li><Link to="/about">ABOUT</Link></li>
             <li><Link to="/portfolio">PORTFOLIO</Link></li>
             <li><Link to="/contact">CONTACT</Link></li>
+            <li><Link to="/login">LOGIN</Link></li>
+            <li><Link to="/register">REGISTER</Link></li>
           </ul>
         </div>
         <div className="nav-right">

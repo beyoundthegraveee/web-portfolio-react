@@ -1,0 +1,78 @@
+.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../background_images/CHLOE13.jpg');
+    background-size: contain;
+    background-position: center;
+    font-family: 'CormorantGaramondBold', sans-serif;
+  }
+  
+  .login-page h2 {
+    background-color: #000000;
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  
+  form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  form label {
+    font-size: 1rem;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  form input:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
+  
+  button {
+    background-color: #007BFF;
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  

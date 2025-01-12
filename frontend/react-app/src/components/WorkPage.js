@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Modal from 'react-modal';
 import '../components/styles/work.css';
+import '../components/styles/modal.css';
 
 const WorkPage = () => {
   const { id } = useParams();
   const [projectDetails, setProjectDetails] = useState(null);
   const [reviewDetails, setReviewDetails] = useState(null);
   const [clientDetails, setClientDetails] = useState(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -32,6 +36,36 @@ const WorkPage = () => {
       });
   }, [id]);
 
+  const handleUpdateProject = () => {
+    navigate(`/update-project/${id}`);
+  };
+
+  const handleUpdateClient = () => {
+    navigate(`/update-client/${id}`);
+  };
+
+  const handleUpdateReview = () => {
+    const clientId = clientDetails.ID;
+    navigate(`/update-review/${id}/${clientId}`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:4040/projects/${id}`);
+      setProjectDetails(null);
+      setReviewDetails(null);
+      setClientDetails(null);
+      setIsDeleteModalOpen(true);
+    } catch (error) {
+      console.error('Error deleting project:', error);
+    }
+  };
+
+  const closeDeleteModal = () => {
+    navigate('/portfolio');
+    setIsDeleteModalOpen(false);
+  };
+
   return (
     <div className="work-page">
       <h1 className="page-title">Project Details</h1>
@@ -55,9 +89,9 @@ const WorkPage = () => {
         <p>Loading project details...</p>
       )}
 
-      <h3>Review</h3>
       {reviewDetails ? (
         <div className="review-container">
+          <h3>Review</h3>
           <p><strong>Requirements Rating:</strong> {reviewDetails.Ocena_wymagan}</p>
           <p><strong>Time Rating:</strong> {reviewDetails.Ocena_czasu}</p>
           <p><strong>Impression:</strong> {reviewDetails.Wrazenie}</p>
@@ -75,7 +109,27 @@ const WorkPage = () => {
       ) : (
         <p>Loading client details...</p>
       )}
+
+      <button onClick={handleUpdateProject} className="update-button">update project</button>
+      <button onClick={handleUpdateClient} className="update-button">update client</button>
+      <button onClick={handleUpdateReview} className="update-button">update review</button>
+      <button onClick={handleDelete} className="delete-button">delete project</button>
+
+      <Modal
+        isOpen={isDeleteModalOpen}
+        onRequestClose={closeDeleteModal}
+        ariaHideApp={false}
+        contentLabel="Project Deleted"
+        className="modal"
+        overlayClassName="modal-overlay"
+      >
+        <h2>Project Deleted Successfully!</h2>
+        <button onClick={closeDeleteModal}>Close</button>
+      </Modal>
+
     </div>
+
+
   );
 };
 

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import '../components/styles/waves.css';
-// import '../components/styles/noise.css';
 import './Noise';
 import './Waves';
 
