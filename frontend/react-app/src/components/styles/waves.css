@@ -1,7 +1,7 @@
 .home {
   width: 100vw;
   height: 100vh;
-  background: #000000;
+  background: #5c5c5c00;
   position: relative;
 }
 
@@ -47,8 +47,8 @@ a-waves {
 
     path {
       fill: none;
-      stroke: #5a0202;
-      stroke-width: 1px;
+      stroke: #000000;
+      stroke-width: 2px;
     }
   }
 }
