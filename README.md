@@ -1,3 +1,8 @@
+<video width="800" controls>
+  <source src="video.mp4" type="video/mp4">
+  Your browser do not support video
+</video>
+
 Web Portfolio:
 
 Description: The project consists of two parts, backend: which is the express server to run the API with which the client side interacts, frontend: represents the SPA web application through which the user interacts with the application.
